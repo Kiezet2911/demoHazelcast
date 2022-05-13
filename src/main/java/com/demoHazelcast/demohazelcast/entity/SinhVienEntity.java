@@ -1,17 +1,20 @@
 package com.demoHazelcast.demohazelcast.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "sinhvien")
-public class SinhVienEntity{
+public class SinhVienEntity implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")

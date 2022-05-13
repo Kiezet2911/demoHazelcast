@@ -3,14 +3,8 @@ package com.demoHazelcast.demohazelcast.controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import com.demoHazelcast.demohazelcast.config.HazelcastConfig;
 import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
 import com.demoHazelcast.demohazelcast.service.SinhVienService;
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.map.IMap;
-
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +18,11 @@ public class SinhVienController {
 		this.service = service;
 	}
 
+	@GetMapping("/clear")
+	public void clear() {
+		service.clearCache();
+	}
+
 	@GetMapping
 	public List<SinhVienEntity> findAllEmployee() {
 		return service.findAllSinhVien();
@@ -31,7 +30,7 @@ public class SinhVienController {
 
 	@GetMapping("/prod")
 	@Transactional(readOnly = true)
-	public List<SinhVienEntity> ProdGetAll() {
+	public List<SinhVienEntity> ProdGetAll() {	
 		return service.ProdGetAll();
 	}
 
