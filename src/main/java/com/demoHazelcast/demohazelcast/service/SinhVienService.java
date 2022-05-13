@@ -1,25 +1,23 @@
 package com.demoHazelcast.demohazelcast.service;
 
 import java.util.List;
-import java.util.Optional;
-import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
+import com.demoHazelcast.demohazelcast.model.SinhVien;
 
 public interface SinhVienService {
 	
 	
-	List<SinhVienEntity> findAllSinhVien();
+	List<SinhVien> findAllSinhVien();
 	
 	
-	Optional<SinhVienEntity> findById(Long id);
+	SinhVien findById(Long id);
 
-	SinhVienEntity saveSinhVien(SinhVienEntity sinhVienEntity);
+	SinhVien saveSinhVien(SinhVien SinhVien);
 
-	SinhVienEntity updateSinhVien(SinhVienEntity sinhVienEntity);
+	SinhVien updateSinhVien(SinhVien SinhVien);
 
 	void deleteEmployee(Long id);
-
 	
-	List<SinhVienEntity> ProdGetAll();
+	List<SinhVien> ProdGetAll();
 
 	
 	void clearCache();

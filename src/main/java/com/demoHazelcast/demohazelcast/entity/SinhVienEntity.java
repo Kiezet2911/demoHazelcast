@@ -1,10 +1,11 @@
 package com.demoHazelcast.demohazelcast.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,10 @@ public class SinhVienEntity implements Serializable {
 
 	@Column(name = "name")
 	private String name;
+
+	@ManyToOne()
+	@JoinColumn(name = "class_id")
+	private ClassEntity Class_id;
 
 	public SinhVienEntity(Long id, String name) {
 		super();
@@ -47,6 +52,14 @@ public class SinhVienEntity implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public ClassEntity getClass_id() {
+		return Class_id;
+	}
+
+	public void setClass_id(ClassEntity class_id) {
+		Class_id = class_id;
 	}
 
 }

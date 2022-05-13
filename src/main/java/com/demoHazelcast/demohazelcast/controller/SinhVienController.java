@@ -2,8 +2,7 @@ package com.demoHazelcast.demohazelcast.controller;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
+import com.demoHazelcast.demohazelcast.model.SinhVien;
 import com.demoHazelcast.demohazelcast.service.SinhVienService;
 import java.util.List;
 import java.util.Optional;
@@ -24,29 +23,29 @@ public class SinhVienController {
 	}
 
 	@GetMapping
-	public List<SinhVienEntity> findAllEmployee() {
+	public List<SinhVien> findAllEmployee() {
 		return service.findAllSinhVien();
 	}
 
 	@GetMapping("/prod")
 	@Transactional(readOnly = true)
-	public List<SinhVienEntity> ProdGetAll() {	
+	public List<SinhVien> ProdGetAll() {	
 		return service.ProdGetAll();
 	}
 
 	@GetMapping("/{id}")
-	public Optional<SinhVienEntity> findSinhVienById(@PathVariable("id") Long id) {
-		return service.findById(id);
+	public Optional<SinhVien> findSinhVienById(@PathVariable("id") Long id) {
+		return null;
 	}
 
 	@PostMapping
-	public SinhVienEntity saveEmployee(@RequestBody SinhVienEntity sinhVienEntity) {
-		return service.saveSinhVien(sinhVienEntity);
+	public SinhVien saveEmployee(@RequestBody SinhVien SinhVien) {
+		return service.saveSinhVien(SinhVien);
 	}
 
 	@PutMapping
-	public SinhVienEntity updateEmployee(@RequestBody SinhVienEntity sinhVienEntity) {
-		return service.updateSinhVien(sinhVienEntity);
+	public SinhVien updateEmployee(@RequestBody SinhVien SinhVien) {
+		return service.updateSinhVien(SinhVien);
 	}
 
 	@DeleteMapping("/{id}")

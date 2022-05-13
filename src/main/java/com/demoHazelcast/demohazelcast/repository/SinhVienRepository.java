@@ -10,4 +10,8 @@ import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
 public interface SinhVienRepository extends JpaRepository<SinhVienEntity, Long> {
 	@Procedure(procedureName = "get_all_sinhvien")
 	List<SinhVienEntity> getAllSinhVien();
+
+	SinhVienEntity findOneByid(Long id);
+
+	List<SinhVienEntity> findByid(Long id);
 }
