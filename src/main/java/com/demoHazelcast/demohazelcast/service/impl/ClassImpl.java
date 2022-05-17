@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.demoHazelcast.demohazelcast.converter.ClassConverter;
 import com.demoHazelcast.demohazelcast.entity.ClassEntity;
-import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
 import com.demoHazelcast.demohazelcast.model.Class;
 import com.demoHazelcast.demohazelcast.repository.ClassRepository;
 import com.demoHazelcast.demohazelcast.repository.SinhVienRepository;
@@ -38,11 +37,9 @@ public class ClassImpl implements ClassService {
 
 	@Override
 	public Class insert(Class cla) {
-		List<SinhVienEntity> list = sinhVienRepository.findByid(cla.getId());
-
+		
 		ClassEntity classEntity = classConverter.toEntity(cla);
-		classEntity.setSinhviens(list);
-
+		classEntity.setSinhviens(sinhVienRepository.findlist(cla.getId()));
 		return classConverter.toModel(repository.save(classEntity));
 	}
 

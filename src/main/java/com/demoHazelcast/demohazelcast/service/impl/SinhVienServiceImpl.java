@@ -2,6 +2,7 @@ package com.demoHazelcast.demohazelcast.service.impl;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -42,16 +43,21 @@ public class SinhVienServiceImpl implements SinhVienService {
 	}
 
 	@Override
+	@CachePut(value = "sinhVienEntity")
 	public SinhVien saveSinhVien(SinhVien SinhVien) {
+		if (SinhVien.getClass_id() != null) {
 
-		ClassEntity classEntity = classRepository.findOneByid(SinhVien.getClass_id());
+			ClassEntity classEntity = classRepository.findOneByid(SinhVien.getClass_id());
 
-		SinhVienEntity sinhVienEntity = sinhVienConverter.toEntity(SinhVien);
-		sinhVienEntity.setClass_id(classEntity);
+			SinhVienEntity sinhVienEntity = sinhVienConverter.toEntity(SinhVien);
+			sinhVienEntity.setClass_id(classEntity);
 
-		sinhVienEntity = sinhVienRepository.save(sinhVienEntity);
+			sinhVienEntity = sinhVienRepository.save(sinhVienEntity);
 
-		return sinhVienConverter.toModel(sinhVienEntity);
+			return sinhVienConverter.toModel(sinhVienEntity);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -67,6 +73,7 @@ public class SinhVienServiceImpl implements SinhVienService {
 	}
 
 	@Override
+	@CacheEvict("sinhVienEntity")
 	public void deleteEmployee(Long id) {
 		sinhVienRepository.deleteById(id);
 	}

@@ -14,8 +14,10 @@ public interface ClassService {
 
 	Class findByID(Long id);
 
+	@Cacheable()
 	Class insert(Class Class);
 
+	@Cacheable()
 	Class update(Class Class);
 
 	void delete(Long id);

@@ -4,11 +4,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import com.demoHazelcast.demohazelcast.model.SinhVien;
 import com.demoHazelcast.demohazelcast.service.SinhVienService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/sv")
+@Tag(name = "Sinh Viên")
 public class SinhVienController {
 
 	private final SinhVienService service;
@@ -34,8 +35,8 @@ public class SinhVienController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<SinhVien> findSinhVienById(@PathVariable("id") Long id) {
-		return null;
+	public SinhVien findSinhVienById(@PathVariable("id") Long id) {
+		return service.findById(id);
 	}
 
 	@PostMapping

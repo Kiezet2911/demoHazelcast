@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.*;
 import com.demoHazelcast.demohazelcast.entity.EmployeeEntity;
 import com.demoHazelcast.demohazelcast.service.EmployeeService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
+@Tag(name = "Nhân Viên")
 public class EmployeeController {
 
 	private final EmployeeService employeeService;

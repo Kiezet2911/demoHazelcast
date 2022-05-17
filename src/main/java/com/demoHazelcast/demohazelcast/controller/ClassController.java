@@ -3,10 +3,14 @@ package com.demoHazelcast.demohazelcast.controller;
 import org.springframework.web.bind.annotation.*;
 import com.demoHazelcast.demohazelcast.model.Class;
 import com.demoHazelcast.demohazelcast.service.ClassService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/class")
+@Tag(name = "Lớp Học")
 public class ClassController {
 
 	private final ClassService service;
@@ -28,6 +32,7 @@ public class ClassController {
 	@GetMapping("/{id}")
 	public Class findSinhVienById(@PathVariable("id") Long id) {
 		return service.findByID(id);
+
 	}
 
 	@PostMapping

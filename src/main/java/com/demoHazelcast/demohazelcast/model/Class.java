@@ -1,9 +1,6 @@
 package com.demoHazelcast.demohazelcast.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import com.demoHazelcast.demohazelcast.entity.SinhVienEntity;
 
 public class Class implements Serializable {
 
